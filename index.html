@@ -10,7 +10,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
+<body onload="loadAllTools()">
   <header class="text-center my-12">
     <h1 class="font-semibold text-[2.5rem] mb-7">AI Universe Hub</h1>
     <button class="btn btn-sm lg:btn-md btn-error">Sort By Date</button>
@@ -20,7 +20,8 @@
   <main>
     <section class="container mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        <div class="card w-[90%] lg:w-full bg-base-100 shadow-xl border-2 mx-auto">
+        <!-- all all cards here -->
+        <!-- <div class="card w-[90%] lg:w-full bg-base-100 shadow-xl border-2 mx-auto">
           <figure class="px-10 pt-10">
             <img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" class="rounded-xl" />
           </figure>
@@ -31,67 +32,7 @@
               <button class="btn btn-primary">Buy Now</button>
             </div>
           </div>
-        </div>
-        <div class="card w-[90%] lg:w-full bg-base-100 shadow-xl border-2 mx-auto">
-          <figure class="px-10 pt-10">
-            <img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" class="rounded-xl" />
-          </figure>
-          <div class="card-body items-center text-center">
-            <h2 class="card-title">Shoes!</h2>
-            <p>If a dog chews shoes whose shoes does he choose?</p>
-            <div class="card-actions">
-              <button class="btn btn-primary">Buy Now</button>
-            </div>
-          </div>
-        </div>
-        <div class="card w-[90%] lg:w-full bg-base-100 shadow-xl border-2 mx-auto">
-          <figure class="px-10 pt-10">
-            <img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" class="rounded-xl" />
-          </figure>
-          <div class="card-body items-center text-center">
-            <h2 class="card-title">Shoes!</h2>
-            <p>If a dog chews shoes whose shoes does he choose?</p>
-            <div class="card-actions">
-              <button class="btn btn-primary">Buy Now</button>
-            </div>
-          </div>
-        </div>
-        <div class="card w-[90%] lg:w-full bg-base-100 shadow-xl border-2 mx-auto">
-          <figure class="px-10 pt-10">
-            <img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" class="rounded-xl" />
-          </figure>
-          <div class="card-body items-center text-center">
-            <h2 class="card-title">Shoes!</h2>
-            <p>If a dog chews shoes whose shoes does he choose?</p>
-            <div class="card-actions">
-              <button class="btn btn-primary">Buy Now</button>
-            </div>
-          </div>
-        </div>
-        <div class="card w-[90%] lg:w-full bg-base-100 shadow-xl border-2 mx-auto">
-          <figure class="px-10 pt-10">
-            <img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" class="rounded-xl" />
-          </figure>
-          <div class="card-body items-center text-center">
-            <h2 class="card-title">Shoes!</h2>
-            <p>If a dog chews shoes whose shoes does he choose?</p>
-            <div class="card-actions">
-              <button class="btn btn-primary">Buy Now</button>
-            </div>
-          </div>
-        </div>
-        <div class="card w-[90%] lg:w-full bg-base-100 shadow-xl border-2 mx-auto">
-          <figure class="px-10 pt-10">
-            <img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" class="rounded-xl" />
-          </figure>
-          <div class="card-body items-center text-center">
-            <h2 class="card-title">Shoes!</h2>
-            <p>If a dog chews shoes whose shoes does he choose?</p>
-            <div class="card-actions">
-              <button class="btn btn-primary">Buy Now</button>
-            </div>
-          </div>
-        </div>
+        </div> -->
       </div>
     </section>
     <section class="show_all text-center">
@@ -99,6 +40,7 @@
     </section>
   </main>
   <!-- main section end-->
+  <script src="js/script.js"></script>
 </body>
 
 </html>
