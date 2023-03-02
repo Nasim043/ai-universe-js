@@ -1,4 +1,5 @@
 function loadAllTools(){
+  document.getElementById('spinner').classList.remove('hidden');
   const url = "https://openapi.programming-hero.com/api/ai/tools";
   fetch(url)
     .then(res => res.json())
@@ -6,10 +7,9 @@ function loadAllTools(){
 }
 
 dispalyApiTools = (tools)=>{
-  console.log(tools);
   const fetchCardTools = document.getElementById('card-tools');
   tools.forEach(tool => {
-    const {image, features, name, published_in} = tool;
+    const {id, image, features, name, published_in} = tool;
     fetchCardTools.innerHTML += `<div class="card w-[90%] lg:w-full bg-base-100 shadow-xl border-2 mx-auto p-6">
     <figure>
       <img src="${image}" alt="Shoes" class="rounded-xl" />
@@ -24,14 +24,16 @@ dispalyApiTools = (tools)=>{
           <i class="fa-regular fa-calendar-days"></i>
           <h2>${published_in}</h2>
         </div>
-        <div class="bg-red-50 p-3 rounded-full">
-          <i class="fa-solid fa-arrow-right text-red-400"></i>
+        <div class="p-3 rounded-full">
+        <label for="my-modal-3" class="btn bg-red-50 border-0 hover:bg-red-200" onclick="fetchAIDetails('${id}')"><i
+        class="fa-solid fa-arrow-right text-red-400"></i></label>
         </div>
       </div>
     </div>
   </div>`;
-
   });
+  document.getElementById('spinner').classList.add('hidden');
+  document.getElementById('show-more-button').classList.remove('hidden');
 }
 
 function getAllFeatures(features){
@@ -40,4 +42,16 @@ function getAllFeatures(features){
     featureOlList += `<li>${feature}</li>`;
   })
   return featureOlList + '</ol>';
+}
+
+function fetchAIDetails(id){
+  const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
+  fetch(url)
+    .then(res => res.json())
+    .then(data => showAIDetails(data.data))
+}
+
+function showAIDetails(SingleAI){
+  const {description, pricing, features, integrations, image_link, input_output_examples, accuracy} = SingleAI;
+  document.getElementById("modal-body").innerHtml = ``;
 }

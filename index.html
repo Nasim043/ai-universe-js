@@ -19,40 +19,75 @@
 
   <!-- main section start-->
   <main>
+    <section class="spinner">
+      <div id="spinner" class="w-12 h-12 rounded-full animate-spin hidden mx-auto
+                    border-2 border-solid border-blue-500 border-t-transparent"></div>
+    </section>
     <section class="container mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" id="card-tools">
-        <!-- all all cards here -->
-        <!-- <div class="card w-[90%] lg:w-full bg-base-100 shadow-xl border-2 mx-auto p-6">
-          <figure class="px-10 pt-10">
-            <img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" class="rounded-xl" />
-          </figure>
-          <div class="card-body">
-            <h2 class="card-title text-2xl">Features</h2>
-            <ol class="list-decimal list-inside">
-              <li>Now this is a story all about</li>
-              <li>how, my life got flipped-turned</li>
-              <li>my life got flipped-upside down</li>
-            </ol>
-            <hr class="border-[1px] mt-5">
-            <h2 class="card-title text-2xl mt-5 mb-4">ChatGPT</h2>
-            <div class="flex justify-between items-center">
-              <div class="flex items-center gap-2">
-                <i class="fa-regular fa-calendar-days"></i>
-                <h2>11/01/2022</h2>
-              </div>
-              <div class="bg-red-50 p-3 rounded-full">
-                <i class="fa-solid fa-arrow-right text-red-400"></i>
-              </div>
-            </div>
-          </div>
-        </div> -->
+        <!-- show all cards here -->
       </div>
     </section>
     <section class="show_all text-center">
-      <button class="btn btn-sm lg:btn-md btn-error my-12">Sort By Date</button>
+      <button id="show-more-button" class="btn btn-sm lg:btn-md btn-error my-12 hidden">Show More</button>
     </section>
   </main>
   <!-- main section end-->
+
+  <!-- modal -->
+  <input type="checkbox" id="my-modal-3" class="modal-toggle" />
+  <div class="modal" id="modal-body">
+    <div class="modal-box w-[90%] max-w-5xl">
+      <label for="my-modal-3"
+        class="btn btn-sm btn-circle absolute right-2 top-2 bg-red-500 border-0 hover:bg-red-600">✕</label>
+      <!-- details modal -->
+      <div class="flex flex-col md:flex-row gap-5">
+        <!-- detail left div -->
+        <div class="bg-red-50 p-7 border-red-400 border-[1px] rounded-xl lg:w-1/2">
+          <h1 class="text-2xl font-semibold">ChatGPT is an AI-powered chatbot platform that uses OpenAI's GPT technology
+            to simulate
+            human conversation.</h1>
+          <div class="flex flex-col md:flex-row justify-between my-6 gap-4 text-center">
+            <div class="bg-white py-5 px-5 text-lime-600 rounded-xl font-semibold">
+              <p>$10/month</p>
+              <p>Basic</p>
+            </div>
+            <div class="bg-white py-5 px-5 text-amber-600 rounded-xl font-semibold">
+              <p>$50/month</p>
+              <p>Pro</p>
+            </div>
+            <div class="bg-white py-5 px-5 text-red-600 rounded-xl font-semibold">
+              <p>Contact us</p>
+              <p>Enterprise</p>
+            </div>
+          </div>
+          <div class="flex flex-col md:flex-row justify-between gap-4">
+            <div>
+              <h1 class="text-2xl font-semibold mb-4">Features</h1>
+              <ul class="list-disc list-inside">
+                <li>Customizable responses</li>
+                <li>Multilingual support</li>
+                <li>Seamless integration</li>
+              </ul>
+            </div>
+            <div>
+              <h1 class="text-2xl font-semibold  mb-4">Integrations</h1>
+              <ul class="list-disc list-inside">
+                <li>FB Messenger</li>
+                <li>Slack</li>
+                <li>Telegram</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- detail right div -->
+        <div class="p-7 border-[1px] rounded-xl  lg:w-1/2 text-center mb-4">
+          <h1 class="text-2xl font-semibold">Hi, how are you doing today?</h1>
+          <h1 class="">I'm doing well, thank you for asking. How can I assist you today?</h1>
+        </div>
+      </div>
+    </div>
+  </div>
   <script src="js/script.js"></script>
 </body>
 
