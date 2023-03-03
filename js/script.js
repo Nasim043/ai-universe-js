@@ -88,8 +88,8 @@ function showAIDetails(SingleAI){
         ${accuracy.score  ? getAccuracy(accuracy)  : ''}
       </figure>
       <div class="card-body items-center text-center">
-        <h1 class="text-2xl font-semibold mb-4">${input_output_examples[0].input}</h1>
-        <h1 class="">${input_output_examples[0].output}</h1>
+        <h1 class="text-2xl font-semibold mb-4">${input_output_examples ? input_output_examples[0].input : "Can you give any example?"}</h1>
+        <h1 class="">${input_output_examples ? input_output_examples[0].output : "No! Not Yet! Take a break!!!"}</h1>
       </div>
     </div>
   </div>
