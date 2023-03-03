@@ -62,7 +62,95 @@ function fetchAIDetails(id){
 
 function showAIDetails(SingleAI){
   const {description, pricing, features, integrations, image_link, input_output_examples, accuracy} = SingleAI;
-  document.getElementById("modal-body").innerHtml = ``;
+  document.getElementById("modal-body").innerHTML = `<div class="modal-box w-[90%] max-w-5xl">
+  <label for="my-modal-3"
+    class="btn btn-sm btn-circle absolute right-2 top-2 bg-red-500 border-0 hover:bg-red-600">✕</label>
+  <!-- details modal -->
+  <div class="flex flex-col md:flex-row gap-5 my-4">
+    <!-- detail left div -->
+    <div class="bg-red-50 p-7 border-red-400 border-[1px] rounded-xl lg:w-1/2">
+      <h1 class="text-2xl font-semibold">${description}</h1>
+      ${getPricingArea(pricing)}
+      <div class="flex flex-col md:flex-row justify-between gap-4">
+        <div>
+          ${getFeatures(features)}
+        </div>
+        <div>
+        <h1 class="text-2xl font-semibold  mb-4">Integrations</h1>
+        ${getIntegrations(integrations)}
+        </div>
+      </div>
+    </div>
+    <!-- detail right div -->
+    <div class="card lg:w-1/2 border-[1px]">
+      <figure class="px-7 pt-7 relative">
+        <img src="${image_link[0]}" alt="AI" class="rounded-xl" />
+        ${accuracy.score  ? getAccuracy(accuracy)  : ''}
+      </figure>
+      <div class="card-body items-center text-center">
+        <h1 class="text-2xl font-semibold mb-4">${input_output_examples[0].input}</h1>
+        <h1 class="">${input_output_examples[0].output}</h1>
+      </div>
+    </div>
+  </div>
+</div>`;
+}
+
+// get pricing
+function getPricingArea(pricing){
+  if(!pricing){
+    return `<div class="flex flex-col md:flex-row justify-between my-6 gap-4 items-center">
+    <div class="bg-white py-5 px-5 text-lime-600 rounded-xl font-semibold">
+      <p>Free of Cost</p>
+    </div>
+    <div class="bg-white py-5 px-5 text-amber-600 rounded-xl font-semibold">
+      <p>Free of Cost</p>
+    </div>
+    <div class="bg-white py-5 px-5 text-red-600 rounded-xl font-semibold">
+      <p>Free of Cost</p>
+    </div>
+    </div>`;
+  }
+  let color = ['lime', 'amber', 'red'];
+  let htmlContent = `<div class="grid grid-cols-1 md:grid-cols-3 justify-between my-6 gap-4 text-center items-center">`;
+  pricing.forEach((price,index) => {
+    htmlContent += `
+    <div class="bg-white py-5 px-5 text-${color[index]}-600 rounded-xl font-semibold">
+      <p>${price.price ? price.price : 'Free of Cost/'}</p>
+      <p>${price.plan}</p>
+    </div>`;
+  })
+  return htmlContent + '</div>';
+}
+// get features
+function getFeatures(features){
+  let htmlContent = `<h1 class="text-2xl font-semibold mb-4">Features</h1>
+  <ul class="list-disc list-inside">`;
+  for (const key in features) {
+    if (Object.hasOwnProperty.call(features, key)) {
+      const element = features[key];
+      htmlContent += `<li>${element.feature_name}</li>`;
+    }
+  }
+  return htmlContent + '</ul>';
+}
+
+// get integrations
+function getIntegrations(integrations){
+  if(!integrations){
+    return '<h1>No Data found</h1>'
+  }
+  let htmlContent = `<ul class="list-disc list-inside">`;
+    integrations.forEach(integration =>{
+      htmlContent += ` <li>${integration}</li>`
+    })
+  return htmlContent + '</ul>';
+}
+
+// get accuracy label
+function getAccuracy(accuracy){
+  return `<span id="accuracy-btn" class="bg-red-500 text-white absolute top-0 right-0 mx-8 mt-8 rounded px-2 py-1">
+  ${accuracy.score*100 + "% accuracy"}</span>`;
 }
 
 // show more button click event
