@@ -1,16 +1,24 @@
-function loadAllTools(isShowAll){
+function loadAllTools(isShowAll, isSort){
   document.getElementById('spinner').classList.remove('hidden');
   const url = "https://openapi.programming-hero.com/api/ai/tools";
   fetch(url)
     .then(res => res.json())
-    .then(data => dispalyApiTools(data.data.tools, isShowAll))  
+    .then(data => dispalyApiTools(data.data.tools, isShowAll, isSort))  
 }
 
-dispalyApiTools = (tools, isShowAll = false)=>{
+dispalyApiTools = (tools, isShowAll = false, isSort = false)=>{
   const fetchCardTools = document.getElementById('card-tools');
+  // sort by date
+  if(isSort){
+    tools.sort(function(a,b){
+      const date1 = new Date(a.published_in);
+      const date2 = new Date(b.published_in);
+      return date2 - date1;
+    })
+  }
 
   // slice first 6 tools
-  if(!isShowAll && tools.length > 6){
+  if(isShowAll === false && tools.length > 6){
     tools = tools.slice(0,6);
     document.getElementById('show-more-button').classList.remove('hidden');
   }else{
@@ -157,5 +165,14 @@ function getAccuracy(accuracy){
 
 // show more button click event
 document.getElementById('show-more-button').addEventListener('click', function(){
-  loadAllTools(true);
+  const isSort = document.getElementById('sort-by-date').classList.contains('sorting');
+  loadAllTools(true, isSort);
+})
+
+// sort by date
+document.getElementById('sort-by-date').addEventListener('click', function(){
+  document.getElementById('sort-by-date').classList.add('sorting');
+  const showMoreBtn = document.getElementById('show-more-button');
+  const isShowAllBtnHidden = showMoreBtn.classList.contains('hidden');
+  loadAllTools(isShowAllBtnHidden, true);
 })
