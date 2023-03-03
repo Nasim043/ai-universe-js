@@ -1,13 +1,23 @@
-function loadAllTools(){
+function loadAllTools(isShowAll){
   document.getElementById('spinner').classList.remove('hidden');
   const url = "https://openapi.programming-hero.com/api/ai/tools";
   fetch(url)
     .then(res => res.json())
-    .then(data => dispalyApiTools(data.data.tools))  
+    .then(data => dispalyApiTools(data.data.tools, isShowAll))  
 }
 
-dispalyApiTools = (tools)=>{
+dispalyApiTools = (tools, isShowAll = false)=>{
   const fetchCardTools = document.getElementById('card-tools');
+
+  // slice first 6 tools
+  if(!isShowAll && tools.length > 6){
+    tools = tools.slice(0,6);
+    document.getElementById('show-more-button').classList.remove('hidden');
+  }else{
+    document.getElementById('show-more-button').classList.add('hidden');
+  }
+
+  fetchCardTools.innerHTML = '';
   tools.forEach(tool => {
     const {id, image, features, name, published_in} = tool;
     fetchCardTools.innerHTML += `<div class="card w-[90%] lg:w-full bg-base-100 shadow-xl border-2 mx-auto p-6">
@@ -33,7 +43,6 @@ dispalyApiTools = (tools)=>{
   </div>`;
   });
   document.getElementById('spinner').classList.add('hidden');
-  document.getElementById('show-more-button').classList.remove('hidden');
 }
 
 function getAllFeatures(features){
@@ -55,3 +64,8 @@ function showAIDetails(SingleAI){
   const {description, pricing, features, integrations, image_link, input_output_examples, accuracy} = SingleAI;
   document.getElementById("modal-body").innerHtml = ``;
 }
+
+// show more button click event
+document.getElementById('show-more-button').addEventListener('click', function(){
+  loadAllTools(true);
+})
