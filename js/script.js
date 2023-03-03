@@ -100,13 +100,13 @@ function showAIDetails(SingleAI){
 function getPricingArea(pricing){
   if(!pricing){
     return `<div class="flex flex-col md:flex-row justify-between my-6 gap-4 items-center">
-    <div class="bg-white py-5 px-5 text-lime-600 rounded-xl font-semibold">
+    <div class="bg-white py-5 px-5 h-full text-lime-600 rounded-xl font-semibold flex justify-center items-center">
       <p>Free of Cost</p>
     </div>
-    <div class="bg-white py-5 px-5 text-amber-600 rounded-xl font-semibold">
+    <div class="bg-white py-5 px-5 h-full text-amber-600 rounded-xl font-semibold flex justify-center items-center">
       <p>Free of Cost</p>
     </div>
-    <div class="bg-white py-5 px-5 text-red-600 rounded-xl font-semibold">
+    <div class="bg-white py-5 px-5 h-full text-red-600 rounded-xl font-semibold flex justify-center items-center">
       <p>Free of Cost</p>
     </div>
     </div>`;
@@ -115,9 +115,11 @@ function getPricingArea(pricing){
   let htmlContent = `<div class="grid grid-cols-1 md:grid-cols-3 justify-between my-6 gap-4 text-center items-center">`;
   pricing.forEach((price,index) => {
     htmlContent += `
-    <div class="bg-white py-5 px-5 text-${color[index]}-600 rounded-xl font-semibold">
-      <p>${price.price ? price.price : 'Free of Cost/'}</p>
-      <p>${price.plan}</p>
+    <div class="bg-white py-5 px-5 h-full text-${color[index]}-600 rounded-xl font-semibold flex justify-center items-center">
+      <div>
+        <p>${price.price ? price.price : 'Free of Cost/'}</p>
+        <p>${price.plan}</p>
+      </div>
     </div>`;
   })
   return htmlContent + '</div>';
