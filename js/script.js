@@ -90,7 +90,7 @@ function showAIDetails(SingleAI){
       </div>
     </div>
     <!-- detail right div -->
-    <div class="card lg:w-1/2 border-[1px]">
+    <div class="card lg:w-1/2 border-[1px] rounded-xl">
       <figure class="px-7 pt-7 relative">
         <img src="${image_link[0]}" alt="AI" class="rounded-xl" />
         ${accuracy.score  ? getAccuracy(accuracy)  : ''}
